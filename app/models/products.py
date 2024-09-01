@@ -13,9 +13,11 @@ class Product(Base):
     price = Column(Integer)
     image_url = Column(String)
     stock = Column(Integer)
-    category_id = Column(Integer, ForeignKey('categories.id'))
+    category_id = Column(Integer, ForeignKey('products.id'))
     rating = Column(Float)
     is_active = Column(Boolean, default=True)
 
-    category = relationship('Category', back_populates='products')
+    category = relationship('category', back_populates='products')
 
+from sqlalchemy.schema import CreateTable
+print(CreateTable(Product.__table__))

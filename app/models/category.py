@@ -13,7 +13,7 @@ class Category(Base):
     is_active = Column(Boolean, default=True)
     parent_id = Column(Integer, ForeignKey('categories.id'), nullable=True)
 
-    products = relationship('Product', back_populates='Category')
+    products = relationship('products', back_populates='category')
 
 from sqlalchemy.schema import CreateTable
 print(CreateTable(Category.__table__))
